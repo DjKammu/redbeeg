@@ -1,0 +1,1 @@
+[14-Feb-2018 10:24:44 Etc/GMT] PHP Fatal error:  Call to undefined function finfo_open() in /home/ibitore3/public_html/domains/iflinz.com/apps_panel/play2win/upload_files_to_drive/index.php on line 47

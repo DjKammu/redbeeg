@@ -1,0 +1,51 @@
+[01-Sep-2019 19:28:23 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php:15
+Stack trace:
+#0 /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php(74): backup_tables('localhost', 'ibitore3_contes...', 'ibitore3_contes...', 'ibitore3_contes...')
+#1 {main}
+  thrown in /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php on line 15
+[01-Sep-2019 19:28:26 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php:15
+Stack trace:
+#0 /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php(74): backup_tables('localhost', 'ibitore3_contes...', 'ibitore3_contes...', 'ibitore3_contes...')
+#1 {main}
+  thrown in /home1/exodrb9g/public_html/redbeeg/admin-panel/database_backup.php on line 15
+[29-Nov-2019 17:24:10 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:26:14 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:26:15 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:26:33 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:26:40 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:26:40 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:27:27 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:27:27 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:32:32 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:33:24 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:35:10 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:38:43 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:38:48 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:38:48 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 17:39:44 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[29-Nov-2019 18:08:06 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:28:01 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:28:12 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:28:17 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:28:19 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:28:19 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:38:48 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:38:50 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:40:01 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:40:10 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:40:11 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 16:11:14 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/exodrf8j/public_html/redbeeg/admin-panel/database_backup.php:15
+Stack trace:
+#0 /home/exodrf8j/public_html/redbeeg/admin-panel/database_backup.php(74): backup_tables('localhost', 'ibitore3_contes...', 'ibitore3_contes...', 'ibitore3_contes...')
+#1 {main}
+  thrown in /home/exodrf8j/public_html/redbeeg/admin-panel/database_backup.php on line 15
+[13-Mar-2020 10:41:22 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 10:43:12 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 11:22:03 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 11:38:48 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 11:38:52 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[13-Mar-2020 11:38:52 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[14-Mar-2020 09:24:40 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[15-Mar-2020 16:37:47 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[15-Mar-2020 16:38:30 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
+[15-Mar-2020 16:38:31 Etc/GMT] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'exodrb9g_exodrb9'@'localhost' (using password: YES) in /home/exodrf8j/public_html/redbeeg/admin-panel/includes/connection.php on line 24
