@@ -70,12 +70,13 @@ if(!empty($_POST['contest_delete_id']))
 	
 	$Qury = "SELECT * FROM category WHERE id='".$id."'";  
 	$getData = $obj->select_assoc($Qury);
-	$imageToUnlink = $getData[0]['video_img'];
-	@unlik("uploads/images/".$imageToUnlink);
-	
+	@$imageToUnlink = $getData[0]['image'];
+
+	 @unlink("uploads/images/".$imageToUnlink);
+
 	 $data1 = "DELETE FROM category WHERE id ='".$id."'"; 
 	 $obj->mysqli->autocommit(FALSE);
-	
+
 	if($resource1 = $obj->mysqli->query($data1))
 	{ 
 		
@@ -83,7 +84,6 @@ if(!empty($_POST['contest_delete_id']))
 		$obj->mysqli->commit();	
 		$_SESSION["error"] = "no";
 			
-		
 	}
 		
 	else
@@ -93,7 +93,6 @@ if(!empty($_POST['contest_delete_id']))
 		$_SESSION["error"] = "yes";
 
 	}
-		
 	
 	}
 		
@@ -212,7 +211,7 @@ if(!empty($_POST['contest_delete_id']))
 										<td>
 											
 											
-											<button type="button"  id="<?php echo $row['contest_id'];?>" data-toggle="modal" data-target="#myModalDelete"  onclick="delete_record(this.id)" style=" margin-bottom: 5px;">
+											<button type="button"  id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModalDelete"  onclick="delete_record(this.id)" style=" margin-bottom: 5px;">
 												<i class="material-icons" style="color: red" data-toggle="tooltip" data-placement="top" title="Delete">delete_forever</i>
 											</button> <br>
 											
