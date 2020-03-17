@@ -13,14 +13,14 @@ class connection
 		private $username = 'root';
 		private $password = '';
 		private $dbname = 'redbeeg';
-		private $conn = '';
 		private $data = array();
+		public $conn = '';
 		
 		public function __construct()
 		{
 			$this->conn = new mysqli($this->hostname,$this->username,$this->password,$this->dbname);
 			
-			//$this->mysqli = new mysqli("localhost", "exodrb9g_exodrb9", "admin@123", "exodrb9g_redbeeg");
+			$this->mysqli = new mysqli($this->hostname,$this->username,$this->password,$this->dbname);
 			
 			//$this->access_var = 'yes';
 			try

@@ -28,10 +28,16 @@
                         </a>
                     </li>
 					
-					<li class="contestphp">
-                        <a href="contest.php">
+					<li class="active videosphp">
+                        <a href="videos.php">
                            <i class="material-icons">poll</i>
                             <span>Video's</span>
+                        </a>
+                    </li>
+                    <li class="active categoriesphp">
+                        <a href="categories.php">
+                           <i class="material-icons">poll</i>
+                            <span>Categories</span>
                         </a>
                     </li>
 					
