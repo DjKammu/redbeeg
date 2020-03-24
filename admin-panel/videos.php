@@ -27,7 +27,9 @@
 		$tags = trim($_POST['tags']);
 		$tags = $obj->conn->real_escape_string($tags);
 		$contest_video = trim($_POST['contest_video']);
-	
+
+		$category_id = ($_POST['category']) ? implode(',', $_POST['category']) : '';
+		$star_id = ($_POST['porn-star']) ? implode(',', $_POST['porn-star']) : '';
 
 		if(!empty($_FILES["video_img"]['name'])) //single file
 		{
@@ -39,7 +41,7 @@
 		} 
 		 
 
-		$data = "INSERT INTO contest (name,video,video_img,details,tags) VALUES('".$contest_name."','".$contest_video."','".$product_image."','".$details."','".$tags."')"; 
+		$data = "INSERT INTO contest (name,video,video_img,details,tags,category_id,star_id) VALUES('".$contest_name."','".$contest_video."','".$product_image."','".$details."','".$tags."','".$category_id."','".$star_id."')"; 
 		
 		
 		$result = $obj->insert($data);
@@ -133,8 +135,6 @@ if(!empty($_POST['contest_delete_id']))
         	</form>
 				<?php  
 						
-				
-
 				        	if($_POST['url_1']){
 				        	  $type_mime = $obj->mime_content_type($_POST['url_1']);
 				        	    $Array = explode('/',$type_mime );
@@ -371,9 +371,10 @@ if(!empty($_POST['contest_delete_id']))
 									   <label for="image1">Screenshots of video <b class="blink_me">(W*H 600*300)</b> :</label>
 									   <input name="video_img" type="file" id="video_img" class="form-control" accept=".jpg, .jpeg, .png" required>
 									</div>
-									<div class="form-">
-
-										<select class="custom-select" multiple="">
+									<div class="form-group">
+                                        <label for="image1">Categories</label>
+										<select class="form-control custom-select" 
+										name="category[]" multiple="">
 
 										<?php $get_cat_name = "SELECT * FROM `category`";
 									
@@ -392,17 +393,47 @@ if(!empty($_POST['contest_delete_id']))
 										?>
 										</select>
 									</div>
+                                   </br>
+									<div class="form-group">
+                                        <label for="image1">Porn Stars</label>
+										<select class="form-control custom-select" 
+										name="porn-star[]" multiple="">
+
+										<?php $get_cat_name = "SELECT * FROM `porn_stars`";
 									
+										$data = $obj->select($get_cat_name);
+									
+									//	echo "<pre>";print_r($data);echo "</pre>";
+									
+									foreach($data as $row)
+									{	
+										?>
+
+									<option value='<?php echo $row['id'] ?>'>
+
+
+										<?php echo $row['name']; ?></option>
+									<?php
+									}
+
+										?>
+										</select>
+									</div>
+									</br>
 									<div class="form-group">
 									   <label for="image1">Description :</label>
 									   <textarea name="details" class="form-control"></textarea>
-									</div>									
+									</div>	
+									</br>								
 									<div class="form-group">
 									   <label for="image1">Tags :</label>
 									   <textarea  type="text" name="tags" class="form-control" ></textarea>
 									   
-									    <input type="text" name="tags" class="form-control" data-role="tagsinput">
-									</div>								  
+									    
+									</div>	
+
+									<!-- <input type="text" name="tags" class="form-control" data-role="tagsinput"> -->
+
 								</div>
 							</div>
 						</div>
@@ -439,7 +470,9 @@ if(!empty($_POST['contest_delete_id']))
 		<form method='post' class="video-upload" action='videoupload.php' enctype='multipart/form-data' >
 			<div class="form-group focused" style="">
 				<label for="video">Video:</label>
-					<input name="video" type="file" id="video" class="form-control" required oninvalid="this.setCustomValidity('Please select file')">
+				<input name="video" type="file" id="video" class="form-control" required 
+					
+					>
 				
 				<div class="row" >
 					<div class="col-md-12">
