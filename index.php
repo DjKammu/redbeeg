@@ -171,7 +171,7 @@ $.ajax(settings).done(function (response) {
 
 
       </div>
-      <?php $link = 'index.php?page=%d';
+      <?php $link = '?page=%d';
 		$pagerContainer = '<div style="width: 300px;">';   
 		if( $totalPages != 0 ) 
 		{

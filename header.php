@@ -1,9 +1,14 @@
 <?php
 require"admin-panel/includes/connection.php";
+
+include 'env.php';
+
 $obj = new connection;
-$pornstar = $_GET['pornstar'];
-$search = $_GET['search'];
-$Star =  $row['Star_Name'];
+$pornstar = isset($_GET['pornstar']) ? $_GET['pornstar'] : '';
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$Star = isset($_GET['Star_Name']) ? $_GET['Star_Name'] : '';
+
+
 
 //die();
 
@@ -13,7 +18,9 @@ $tag_query = "SELECT * FROM `category` WHERE `name` = '$pornstar'";
 $get_query = "SELECT * FROM `contest` WHERE `Star_Name` = '$search' ";
 
 // get the category tables
-$star_details = "SELECT * FROM `category` ";
+$pornstars_query = "SELECT * FROM `pornstars` ";
+
+$cat_query = "SELECT * FROM `category` ";
 
 //$get_query_main = "SELECT * FROM `contest` INNER JOIN category ON contest.category_id=category.id ORDER BY contest_id DESC"   INNER JOIN category ORDER BY contest_id DESC;
 $get_query_main = "SELECT * FROM `contest`  ORDER BY `contest_id` DESC";
@@ -25,7 +32,10 @@ $data = $obj->select_where($get_query);
 
 $pornstar_list = $obj->select_where($tag_query);
 
-$star_details_query = $obj->select_where($star_details);
+$pornstars = $obj->select_where($pornstars_query);
+
+$catogaries = $obj->select_where($cat_query);
+
 $limit = 10;  // Number of entries to show in a page. 
     // Look for a GET variable page if not found default is 1.  
 	function formatSizeUnits($bytes)
@@ -64,8 +74,6 @@ $limit = 10;  // Number of entries to show in a page.
 	unset($latest['tags']);
 	$latestVideo = json_encode($latest);
 	
-	
-	
 ?>
 <!doctype html>
 <html lang="en">
@@ -97,7 +105,7 @@ $limit = 10;  // Number of entries to show in a page.
  	<header class="navbar-dark fixed-top bg-dark">
  		<div class="">
  			 <nav class="navbar navbar-expand-md  container">
-		      <a class="navbar-brand mr-5" href="index.php"><span style="color: red; font-weight: bold">Red</span>Beeg.</a>
+		      <a class="navbar-brand mr-5" href="<?php echo $base_url;?>"><span style="color: red; font-weight: bold">Red</span>Beeg.</a>
 		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="navbar-toggler-icon"></span>
 		      </button>
@@ -108,21 +116,45 @@ $limit = 10;  // Number of entries to show in a page.
 			        	Star's
 			        </a>
 			        	  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					  	<?php foreach($star_details_query AS $row){  
+					  	<?php 
+                       if($pornstars){
+                       	foreach($pornstars AS $row){  
 							if ( !empty($row['name'])) {
 								
-
 		        			?> 
-				        		<a class="dropdown-item" href="catagory_page.php?pornstar=<?php echo $row['name'];?>"> <?php echo $row['name'];?> </a>
-						        
+				           <a class="dropdown-item" 
+				          href="<?php echo $base_url;?>/porn-star/<?php echo $row['name'];?>"> 
+				          <?php echo $row['name'];?> </a>     
 				          <?php
-		        		}
-		        		}
+		        		  }
+		                 }
+                       }
+					  	
 		        		?>
 					</div>
 			      </li>
-			       <li class="nav-item">
-			        <a class="nav-link" href="#">People</a>
+			       <li class="nav-item dropdown">
+			         <a class="nav-link dropdown-toggle" href="#" id="Categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			        	Categories
+			        </a>
+			        	  <div class="dropdown-menu" aria-labelledby="Categories">
+					  	<?php 
+                       if($catogaries){
+                       	foreach($catogaries AS $row){  
+							if ( !empty($row['name'])) {
+								
+		        			?> 
+				           <a class="dropdown-item" 
+				          href="<?php echo $base_url;?>/porn-star/<?php echo $row['name'];?>"> 
+				          <?php echo $row['name'];?> </a>     
+				          <?php
+		        		  }
+		                 }
+                       }
+					  	
+		        		?>
+					</div>
+
 			      </li>
 			      <li class="nav-item">
 			        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Tags</a>
