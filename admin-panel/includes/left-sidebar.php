@@ -40,6 +40,12 @@
                             <span>Categories</span>
                         </a>
                     </li>
+                    <li class="active porn-starsphp">
+                        <a href="porn-stars.php">
+                           <i class="material-icons">poll</i>
+                            <span>Porn Stars</span>
+                        </a>
+                    </li>
 					
 				<!-- 	<li class="questionphp">
                         <a href="question.php">

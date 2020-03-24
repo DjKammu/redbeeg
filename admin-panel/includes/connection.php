@@ -11,7 +11,7 @@ class connection
 {
 		private $hostname = 'localhost';
 		private $username = 'root';
-		private $password = '';
+		private $password = 'root';
 		private $dbname = 'redbeeg';
 		private $data = array();
 		public $conn = '';

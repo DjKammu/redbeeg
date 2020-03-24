@@ -16,19 +16,13 @@
 =         Add Contest code          =
 =============================================*/
 
-
 	if(isset($_POST['save']))
 	{  
 		$name1 = $_POST['name1'];
 		$contest_name = $name1;
-		$contest_video = trim($_POST['contest_video']);
 		$details = trim($_POST['details']);
-		$details = $obj->conn->real_escape_string($details);
-		$tags = trim($_POST['tags']);
-		$tags = $obj->conn->real_escape_string($tags);
-		$contest_video = trim($_POST['contest_video']);
+		$details = $obj->mysqli->real_escape_string($details);
 	
-
 		if(!empty($_FILES["video_img"]['name'])) //single file
 		{
 			$file_name= str_replace(" ","-",$_FILES['video_img']['name']);
@@ -37,17 +31,15 @@
 			$tpath1="uploads/images/".$product_image; 			 
 			$video_img=compress_image($_FILES["video_img"]["tmp_name"], $tpath1, 80);		 
 		} 
-		 
 
-		$data = "INSERT INTO contest (name,video,video_img,details,tags) VALUES('".$contest_name."','".$contest_video."','".$product_image."','".$details."','".$tags."')"; 
-		
+		$data = "INSERT INTO porn_stars (name,image,description) VALUES('".$contest_name."','".$product_image."','".$details."')"; 
 		
 		$result = $obj->insert($data);
 		
 		
 		if($result > 0)
 		{      
-			$_SESSION["msg"] = "Video Added Successfully !";
+			$_SESSION["msg"] = "Porn Star Added Successfully !";
 			
 			$_SESSION['error'] = 'no';
 		
@@ -76,45 +68,31 @@ if(!empty($_POST['contest_delete_id']))
 
 	$id = trim($_POST['contest_delete_id']);
 	
-	$Qury = "SELECT * FROM contest WHERE contest_id='".$id."'";  
+	$Qury = "SELECT * FROM porn_stars WHERE id='".$id."'";  
 	$getData = $obj->select_assoc($Qury);
-	$imageToUnlink = $getData[0]['video_img'];
-	@unlink("uploads/images/".$imageToUnlink);
-	$videoToUnlink = $getData[0]['video'];
-	@unlink("uploads/videos/".$videoToUnlink);
-	
-	
-	 $data1 = "DELETE FROM contest WHERE contest_id='".$id."'"; 
-	 $obj->mysqli->autocommit(FALSE);
-		
-		if($resource1 = $obj->mysqli->query($data1))
-		{   
-			if(file_exists($unlinkImage))
-			{
-				unlink($unlinkImage);
-			}
-			
-			
-			if(file_exists($unlinkVideo))
-			{
-				unlink($unlinkVideo);
-			}
-			
-			$_SESSION["msg"] = "Delete Successfully !";
-			$obj->mysqli->commit();	
-			$_SESSION["error"] = "no";
-				
-			
-		}
-			
-		else
-		{
-			$obj->mysqli->rollback();
-			$_SESSION["msg"] = "Technical Error !";
-			$_SESSION["error"] = "yes";
+	@$imageToUnlink = $getData[0]['image'];
 
-		}
+	 @unlink("uploads/images/".$imageToUnlink);
+
+	 $data1 = "DELETE FROM porn_stars WHERE id ='".$id."'"; 
+	 $obj->mysqli->autocommit(FALSE);
+
+	if($resource1 = $obj->mysqli->query($data1))
+	{ 
 		
+		$_SESSION["msg"] = "Delete Successfully !";
+		$obj->mysqli->commit();	
+		$_SESSION["error"] = "no";
+			
+	}
+		
+	else
+	{
+		$obj->mysqli->rollback();
+		$_SESSION["msg"] = "Technical Error !";
+		$_SESSION["error"] = "yes";
+
+	}
 	
 	}
 		
@@ -127,75 +105,9 @@ if(!empty($_POST['contest_delete_id']))
 
 	<section class="content">
         <div class="container-fluid">
-        	<form method='POST'>
-        		<input type="url" name="url_1">
-        		<button type="submit" class="btn btn-success">Submit</button>
-        	</form>
-				<?php  
-						
-				
-
-				        	if($_POST['url_1']){
-				        	  $type_mime = $obj->mime_content_type($_POST['url_1']);
-				        	    $Array = explode('/',$type_mime );
-				        	    $fileType = current($Array);
-				        	  
-
-				        	  if ($fileType == 'video') {
-                                  $curl = curl_init();
-								  $timeout = 0;
-								  curl_setopt($curl, CURLOPT_URL, $_POST['url_1']);
-								  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-								  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-								  curl_setopt($curl, CURLOPT_HEADER, false);
-								  curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);
-								   
-								  $response = curl_exec($curl);
-								/*   //$err = curl_error($curl);  
-										echo $response;
-										die();
-								  curl_close($curl);
-								  
-								  return $response; */
-								  
-								/* $filename_1 = pathinfo($_POST['url_1'], PATHINFO_FILENAME);
-				        	    $video_name = $filename_1.'.'.end($Array);
-				        		$vid = file_get_contents($_POST['url_1']);
-							    $result_img = file_put_contents("uploads/videos/".$video_name, $vid); */
-
-								//$vid = file_get_contents($_POST['url_1']);
-								$filename_1 = pathinfo($_POST['url_1'], PATHINFO_FILENAME);
-								$video_name = $filename_1.'.'.end($Array);
-							    $result_img = file_put_contents("uploads/videos/".$video_name, $response); 
-				        	  
-				        	  }
-				        	  else  if ($fileType == 'image') {
-				        	  	
-				        	  	$filename_1 = pathinfo($_POST['url_1'], PATHINFO_FILENAME);
-				        	    $video_name = $filename_1.'.'.end($Array);
-				        		$file = file_get_contents($_POST['url_1']);
-							    $result_img = file_put_contents("uploads/images/".$video_name, $file);
-
-				        	  }
-				        	 
-
-
-							if ($result_img > 0) {
-								$_SESSION["msg"] = "Image Success !";
-								$_SESSION["error"] = "no";
-
-							}
-							else{
-								$_SESSION["msg"] = "Technical Error !";
-								$_SESSION["error"] = "yes";
-							}
-				        	}
-
-				        	
-				?>
             <div class="block-header">
              	<!-- Trigger the modal with a button -->
-				<button type="button" class="btn bg-danger" data-toggle="modal" data-target="#myModal"><i class="material-icons">poll</i> Add New Video</button>
+				<button type="button" class="btn bg-danger" data-toggle="modal" data-target="#myModal"><i class="material-icons">poll</i> Add New Porn Star</button>
             </div>
             
             <!-- Exportable Table -->
@@ -204,7 +116,7 @@ if(!empty($_POST['contest_delete_id']))
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Video Details
+                                Porn Star Details
                             </h2>
 							<div style="margin:20px">
 							 <?php 
@@ -250,7 +162,7 @@ if(!empty($_POST['contest_delete_id']))
 							<?php
 							
 									
-									$get_query = "SELECT * FROM `contest` ORDER BY contest_id DESC";
+									$get_query = "SELECT * FROM `porn_stars` ORDER BY id DESC";
 									
 									$data = $obj->select($get_query);
 									$i=1;
@@ -259,14 +171,9 @@ if(!empty($_POST['contest_delete_id']))
                                     <thead>
                                         <tr>
 											<th>#</th>
-                                            <th>Video Name</th>
+                                            <th>Name</th>
                                             
-                                           <th>Video Image</th>
-                                            
-                                           
-											<th>details</th>
-                                            <th>tags</th>
-                                            
+                                           <th>Image</th>
                                            
                                             <th>Action</th>
                                         </tr>
@@ -291,28 +198,19 @@ if(!empty($_POST['contest_delete_id']))
 										<td ><?php echo $i;$i++; ?></td>
 										<td ><?php echo $contestName ; ?></td>
 										
-									
-									
+								
 										<td >
-											<a href = "<?php echo 'uploads/images/'.$row['video_img']; ?>" target="_blank" >
-													<img src="<?php if(!empty($row['video_img'])){
-													echo 'uploads/images/'.$row['video_img'];}else {echo "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
+											<a href = "<?php echo 'uploads/images/'.$row['image']; ?>" target="_blank" >
+													<img src="<?php if(!empty($row['image'])){
+													echo 'uploads/images/'.$row['image'];}else {echo "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
 													}?>"  class="img-thumbnail" style="height:55px; width:55px;" />
 												</a>
 										</td>
 							
-									
-										<td ><?php echo $row['details']; ?></td>
-										<td ><?php echo  $row['tags']; ?></td>
-										
-										
-				
-										
-										
 										<td>
 											
 											
-											<button type="button"  id="<?php echo $row['contest_id'];?>" data-toggle="modal" data-target="#myModalDelete"  onclick="delete_record(this.id)" style=" margin-bottom: 5px;">
+											<button type="button"  id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModalDelete"  onclick="delete_record(this.id)" style=" margin-bottom: 5px;">
 												<i class="material-icons" style="color: red" data-toggle="tooltip" data-placement="top" title="Delete">delete_forever</i>
 											</button> <br>
 											
@@ -356,7 +254,7 @@ if(!empty($_POST['contest_delete_id']))
 		<!-- Modal content-->
 			<div class="modal-content">
 				<h4 class="card-header danger-color white-text text-center py-4">
-		            ADD NEW VIDEO
+		            ADD NEW Porn Star
 		          </h4>
 				<div class="modal-body">
 					<div class="row">
@@ -368,40 +266,13 @@ if(!empty($_POST['contest_delete_id']))
 								   <input type="text" class="form-control" name="name1" required />
 							    </div>
 									<div class="form-group">
-									   <label for="image1">Screenshots of video <b class="blink_me">(W*H 600*300)</b> :</label>
+									   <label for="image1">Image <b class="blink_me">(W*H 600*300)</b> :</label>
 									   <input name="video_img" type="file" id="video_img" class="form-control" accept=".jpg, .jpeg, .png" required>
-									</div>
-									<div class="form-">
-
-										<select class="custom-select" multiple="">
-
-										<?php $get_cat_name = "SELECT * FROM `category`";
-									
-										$data = $obj->select($get_cat_name);
-									
-									//	echo "<pre>";print_r($data);echo "</pre>";
-									
-									foreach($data as $row)
-									{	
-										?>
-
-										<option value='<?php echo $row['id'] ?>'><?php echo $row['name']; ?></option>
-									<?php
-									}
-
-										?>
-										</select>
 									</div>
 									
 									<div class="form-group">
 									   <label for="image1">Description :</label>
 									   <textarea name="details" class="form-control"></textarea>
-									</div>									
-									<div class="form-group">
-									   <label for="image1">Tags :</label>
-									   <textarea  type="text" name="tags" class="form-control" ></textarea>
-									   
-									    <input type="text" name="tags" class="form-control" data-role="tagsinput">
 									</div>								  
 								</div>
 							</div>
@@ -435,38 +306,6 @@ if(!empty($_POST['contest_delete_id']))
 				</div>
 			</div>
 		</form> 
-			  
-		<form method='post' class="video-upload" action='videoupload.php' enctype='multipart/form-data' >
-			<div class="form-group focused" style="">
-				<label for="video">Video:</label>
-					<input name="video" type="file" id="video" class="form-control" required oninvalid="this.setCustomValidity('Please select file')">
-				
-				<div class="row" >
-					<div class="col-md-12">
-						<div class="bararea">
-							<div class="bar"></div>
-						</div> 
-					 <div class="percent"></div>
-					 
-					</div>
-					
-					<div class="col-md-12">
-						<div class="status"></div>
-					</div>
-					
-					<div class="col-md-12">
-						<button class="btn btn-success waves-effect btn-xs upload_video">
-							<i class="material-icons">verified_user</i>
-							<span>Upload</span>
-						</button>
-					</div>
-					
-				</div>
-				<div class="videoValidation"></div>
-				
-			</div>
-			
-		</form>
 	</div>
 	
 </div>
@@ -669,18 +508,7 @@ if(!empty($_POST['contest_delete_id']))
 		
 		function videoValidation(modalId)
 		{
-			var video = $("#"+modalId+" input[name='contest_video']").val();
-			
-			if(video=="")
-			{   
-				$(".videoValidation").html('<div class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>Please Upload Video !</div>');
-				return false;
-				
-			}
-			else{
-				$(".videoValidation").html('');
-				return true;
-			}
+			return true;
 		}
 			
 
