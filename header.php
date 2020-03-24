@@ -123,7 +123,7 @@ $limit = 10;  // Number of entries to show in a page.
 								
 		        			?> 
 				           <a class="dropdown-item" 
-				          href="<?php echo $base_url;?>/porn-star/<?php echo $row['name'];?>"> 
+				          href="<?php echo $base_url;?>porn-star/<?php echo $row['name'];?>"> 
 				          <?php echo $row['name'];?> </a>     
 				          <?php
 		        		  }
@@ -145,7 +145,7 @@ $limit = 10;  // Number of entries to show in a page.
 								
 		        			?> 
 				           <a class="dropdown-item" 
-				          href="<?php echo $base_url;?>/porn-star/<?php echo $row['name'];?>"> 
+				          href="<?php echo $base_url;?>porn-star/<?php echo $row['name'];?>"> 
 				          <?php echo $row['name'];?> </a>     
 				          <?php
 		        		  }
