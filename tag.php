@@ -21,10 +21,6 @@ $pornstar_list = $obj->select_where($tag_query);
 	
 </div>
 
-
-
-
-
 <!-- <pre>
 <?php
 //print_r($data_1)

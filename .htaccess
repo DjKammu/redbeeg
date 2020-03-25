@@ -1,6 +1,13 @@
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteBase /redbeeg
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 RewriteRule ^porn-star/([^\.]+) porn-star.php?s=$1 [NC]
 RewriteRule ^catagory/([^\.]+) catagory.php?s=$1 [NC]
 RewriteRule ^tag/([^\.]+) tag.php?s=$1 [NC]
+</IfModule>
