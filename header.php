@@ -153,7 +153,7 @@ $limit = 10;  // Number of entries to show in a page.
 
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Tags</a>
+			        <a class="nav-link " href="<?php echo $base_url;?>tags" tabindex="-1" aria-disabled="true">Tags</a>
 			      </li>
                 </li>
 		        </ul>

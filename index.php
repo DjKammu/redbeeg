@@ -204,19 +204,6 @@ $.ajax(settings).done(function (response) {
 		echo $pagerContainer; ?>
     
     </main>
-    <footer class="navbar-dark text-white bg-dark pa20">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-6 text-xs-center">
-    				<p style="margin-bottom: 0;">All Right Reserved 2018</p>
-    			</div>
-    			<div class="col-md-6 text-right  text-xs-center footerli">
-    				<a href="">Disclaimer</a>
-    				<a href="">Upload</a>
-    				<a href="">Contact Us</a>
-    			</div>
-    		</div>
-    	</div>
-   </footer>
+
    <?php include'footer.php';  ?>
   
