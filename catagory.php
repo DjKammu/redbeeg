@@ -1,27 +1,37 @@
-<?php include'header.php';  
-
+<?php 
+include'header.php';
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    
-<?php foreach ($pornstar_list AS $row_1) {
+<?php 
 
-} ?>
+$category = isset($_GET['s']) ? $_GET['s'] : '';
+
+// get the category form url and make a query
+$tag_query = "SELECT contest.* FROM `contest` WHERE FIND_IN_SET(category_id,  (SELECT id FROM category
+     WHERE  name= '$category'))";
+
+$pornstar_list = $obj->select_where($tag_query);
+
+
+$get_query_1 = "SELECT * FROM category WHERE  name= '$category'";
+
+$data_1 = $obj->select_where($get_query_1);
+
+$data_1 = $data_1[0];
+
+?>
    
-   <div class="mt-5 pt-5"></div>
+ <div class="mt-5 pt-5"></div>
 <div class="container">
-	<h3><?php echo $row_1['name'];?> </h3>
-	<p> <?php echo $row_1['Description'];?></p>
+	<h3><?php echo $data_1['name'];?> </h3>
+	<p> <?php echo $data_1['Description'];?></p>
 	
 </div>
 
 
 
-<?php 
-$video_id =  $row_1['id'];
 
-$get_query_1 = "SELECT * FROM `contest` WHERE  `category_id` = '$video_id' ";
-$data_1 = $obj->select_where($get_query_1);
-?>
 
 <!-- <pre>
 <?php
@@ -99,13 +109,13 @@ $data_1 = $obj->select_where($get_query_1);
 		
         </div>
 		
-		 <div class="row pdTB20 playerDetails">
+	<div class="row pdTB20 playerDetails">
 	  <?php
 
 
 	  	$page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 
-	  	$total = count( $data_1 ); //total items in array    
+	  	$total = count( $pornstar_list ); //total items in array    
 		$limit = 9; //per page    
 		$totalPages = ceil( $total/ $limit ); //calculate total pages
 		$page = max($page, 1); //get 1 page when $_GET['page'] <= 0
@@ -114,16 +124,16 @@ $data_1 = $obj->select_where($get_query_1);
 		if( $offset < 0 ) $offset = 0;
 
 
-		foreach(array_slice($data_1, $offset, $limit) AS $row){
+		foreach(array_slice($pornstar_list, $offset, $limit) AS $row){
 			?>
 			<div class="col-md-4 col-sm-12 col-xs-12">
-				<a class="videolink1" href="#move" value="admin-panel/uploads/videos/<?php echo $row['video']; ?>" id="video<?php echo $row['contest_id']; ?>">
+				<a class="videolink1" href="#move" value="<?php echo $base_url; ?>admin-panel/uploads/videos/<?php echo $row['video']; ?>" id="video<?php echo $row['contest_id']; ?>">
 				<div class="box hight200_pc">
 				<?php if(!empty($row['video_img'])){
-					$img = 'admin-panel/uploads/images/'.$row['video_img'];
+				$img = $base_url.'admin-panel/uploads/images/'.$row['video_img'];
 				}
 				else{
-					$img = "img/default.jpg";
+					$img = $base_url."img/default.jpg";
 				}				
 			  ?>
 				<img alt="<?php echo $row['name'];?>" title="<?php echo $row['name'];?> " src="<?php echo $img; ?>" class="img-responsive hight200_pc"  />	
@@ -163,7 +173,16 @@ $data_1 = $obj->select_where($get_query_1);
 				-->
 				<div class="col-md-12">
 					<div id="t<?php echo $row['contest_id']; ?>" class="None">
-						<?php echo $row['tags']; ?>
+						<?php 
+                        $tags = ($row['tags']) ? 
+                               explode(' ',str_replace(array('#',','),' ', $row['tags'])) : [];
+                           
+                         $tagHtml = '';  
+                        foreach (array_filter($tags) as $key => $tag) {
+                            $url = 	$base_url.'tag/'.$tag;
+                            $tagHtml .= "<a href='$url'> #$tag </a>";
+                        }
+                        echo $tagHtml; ?>
 					</div>
 				</div> 
 				</div>
@@ -175,9 +194,6 @@ $data_1 = $obj->select_where($get_query_1);
 		}
 	  ?>
   	
-
-
-
       </div>
       <?php $link = 'index.php?page=%d';
 		$pagerContainer = '<div style="width: 300px;">';   

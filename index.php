@@ -92,7 +92,7 @@ $.ajax(settings).done(function (response) {
 		
         </div>
 		
-		 <div class="row pdTB20 playerDetails">
+	<div class="row pdTB20 playerDetails">
 	  <?php
 
 
@@ -155,21 +155,27 @@ $.ajax(settings).done(function (response) {
 				-->
 				<div class="col-md-12">
 					<div id="t<?php echo $row['contest_id']; ?>" class="None">
-						<?php echo $row['tags']; ?>
+						<?php 
+                        $tags = ($row['tags']) ? 
+                               explode(' ',str_replace(array('#',','),' ', $row['tags'])) : [];
+                           
+                         $tagHtml = '';  
+                        foreach (array_filter($tags) as $key => $tag) {
+                            $url = 	$base_url.'tag/'.$tag;
+                            $tagHtml .= "<a href='$url'> #$tag </a>";
+                        }
+                        echo $tagHtml; ?>
 					</div>
 				</div> 
 				</div>
 			</div>
 
 					
-			<?php
+	<?php
 
 		}
 	  ?>
   	
-
-
-
       </div>
       <?php $link = '?page=%d';
 		$pagerContainer = '<div style="width: 300px;">';   

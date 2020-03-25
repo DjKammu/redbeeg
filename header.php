@@ -4,21 +4,17 @@ require"admin-panel/includes/connection.php";
 include 'env.php';
 
 $obj = new connection;
-$pornstar = isset($_GET['pornstar']) ? $_GET['pornstar'] : '';
+
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $Star = isset($_GET['Star_Name']) ? $_GET['Star_Name'] : '';
 
 
 
-//die();
-
-// get the category form url and make a query
-$tag_query = "SELECT * FROM `category` WHERE `name` = '$pornstar'";
 // for serach module
 $get_query = "SELECT * FROM `contest` WHERE `Star_Name` = '$search' ";
 
 // get the category tables
-$pornstars_query = "SELECT * FROM `pornstars` ";
+$pornstars_query = "SELECT * FROM `porn_stars` ";
 
 $cat_query = "SELECT * FROM `category` ";
 
@@ -30,9 +26,9 @@ $data_main = $obj->select_where($get_query_main);
 //print_r($data_main);
 $data = $obj->select_where($get_query);
 
-$pornstar_list = $obj->select_where($tag_query);
 
 $pornstars = $obj->select_where($pornstars_query);
+
 
 $catogaries = $obj->select_where($cat_query);
 
@@ -91,12 +87,12 @@ $limit = 10;  // Number of entries to show in a page.
     <!-- icon cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/mobile-device/512/drop-ink-color-printer-blue-round-512.png" />
-	<link href="dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/font.css">
+	<link href="<?php echo $base_url;?>dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>css/font.css">
 	<!-- Material Design Bootstrap -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>css/main.css">
 	
     <title>RedBeeg.</title>
   </head>
@@ -145,7 +141,7 @@ $limit = 10;  // Number of entries to show in a page.
 								
 		        			?> 
 				           <a class="dropdown-item" 
-				          href="<?php echo $base_url;?>porn-star/<?php echo $row['name'];?>"> 
+				          href="<?php echo $base_url;?>catagory/<?php echo $row['name'];?>"> 
 				          <?php echo $row['name'];?> </a>     
 				          <?php
 		        		  }

@@ -5,27 +5,19 @@ include'header.php';
    
 <?php 
 
-$pornstar = isset($_GET['s']) ? $_GET['s'] : '';
+$tag = isset($_GET['s']) ? $_GET['s'] : '';
 
 // get the category form url and make a query
-$tag_query = "SELECT contest.* FROM `contest` WHERE FIND_IN_SET(star_id,  (SELECT id FROM porn_stars
-     WHERE  name= '$pornstar'))";
+$tag_query = "SELECT contest.* FROM `contest` WHERE tags LIKE '%$tag%'";
+
 
 $pornstar_list = $obj->select_where($tag_query);
-
-
-$get_query_1 = "SELECT * FROM porn_stars WHERE  name= '$pornstar'";
-
-$data_1 = $obj->select_where($get_query_1);
-
-$data_1 = $data_1[0];
 
 ?>
    
  <div class="mt-5 pt-5"></div>
 <div class="container">
-	<h3><?php echo $data_1['name'];?> </h3>
-	<p> <?php echo $data_1['description'];?></p>
+	<h3><?php echo $tag;?> </h3>
 	
 </div>
 

@@ -1,4 +1,6 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
-RewriteRule ^porn-star/([^/]+) porn-star.php?s=$1 [NC,L]
+RewriteRule ^porn-star/([^\.]+) porn-star.php?s=$1 [NC]
+RewriteRule ^catagory/([^\.]+) catagory.php?s=$1 [NC]
+RewriteRule ^tag/([^\.]+) tag.php?s=$1 [NC]

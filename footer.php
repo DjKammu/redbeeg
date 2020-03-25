@@ -2,8 +2,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="lib/jquery.min.js"></script>
-	<script type="text/javascript" src="dist/jplayer/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="<?php echo $base_url;?>lib/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo $base_url;?>dist/jplayer/jquery.jplayer.min.js"></script>
   </body>
 
 <script>
@@ -55,7 +55,7 @@ $('.videolink1').click(function(event){
 	$(".play_show").css('display' , 'flex');
 	$("#jp_video_0").attr('src' , '');
 	$("#jp_video_0").hide();
-	$("#jp_poster_0").attr('src','img/load.jpg');
+	$("#jp_poster_0").attr('src','<?php echo $base_url;?>img/load.jpg');
 	// // $("<div class='ytp-spinner'><div class='ytp-spinner-container'><div class='ytp-spinner-rotator'><div class='ytp-spinner-left'><div class='ytp-spinner-circle'></div></div><div class='ytp-spinner-right'><div class='ytp-spinner-circle'></div></div></div></div></div>").insertAfter("#jp_video_0");
 
 	// $("#jp_poster_0").attr('src' , '' ); 
@@ -67,7 +67,7 @@ $('.videolink1').click(function(event){
 	var clean_title = $.trim(title)
 	var name  = name.trim().substr(0,20)+'...';
 	var details = $("#d"+Numericid).text();
-	var tags = $("#t"+Numericid).text();
+	var tags = $("#t"+Numericid).html();
 
 	setTimeout(function(){
 		$("#jp_video_0").show();
@@ -78,12 +78,9 @@ $('.videolink1').click(function(event){
 		$(".card-header").html('<img src="https://wrappixel.com/demos/admin-templates/monstrous-admin/assets/images/users/4.jpg" class="rounded-circle" style="height:auto; width:40px; margin-right:20px;">'+name);
 		//$(".card-header").text(name);
 		$(".card-text").text(details);
-		$(".card-footer").text(tags);
+		$(".card-footer").html(tags);
 		$(".jp-play").trigger('click');
-		
-
-		
-		 
+				 
 	},200);
 	 
 	
